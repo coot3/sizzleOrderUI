@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-function App() {
+// import CustomerInterface from './interfaces/CustomerInterface'
+import BusinessInterface from './interfaces/BusinessInterface'
+import CustomerInterface from './interfaces/CustomerInterface';
+
+const App = () => {
+
+  const [customerVisible, setCustomerVisible] = useState({})
+  const [businessVisible, setBusinessVisible] = useState({ display: 'none' })
+
+  const toggleInterface = () => {
+    if (businessVisible['display'] === 'none') {
+      setCustomerVisible({display: 'none'})
+      setBusinessVisible({})
+    } else {
+      setCustomerVisible({})
+      setBusinessVisible({display: 'none'})
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div className="customer-interface" style={customerVisible}>
+        <CustomerInterface toggleInterface={toggleInterface} />
+      </div>
+      <div className="business-interface" style={businessVisible}>
+        <BusinessInterface toggleInterface={toggleInterface} />
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
