@@ -45,7 +45,8 @@ const BusinessInterface = ({ toggleInterface }) => {
                         <img src={SizzleLogo} alt="Sizzle Logo" />
                     </div>
                     <div className="slogan">
-                        Current orders refreshing in {refreshTimer}
+                        Current orders refreshing in {refreshTimer}<br />
+                        (click on order items to mark as done.)
                     </div>
                 </div>
                 <div className="banner"></div>
